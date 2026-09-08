@@ -78,3 +78,25 @@ html{scroll-padding-top:108px}
 }
 
 .header nav a[aria-current='location']{color:#a93b00;background:#fff2e6}
+
+/* Original ContaWeb identity and verified company websites. */
+.company-panel .panel-brand.has-logo{background:#fffffff0;border-color:#fff;padding:24px 16px}
+.company-logo{display:block;width:100%;max-width:340px;height:auto;object-fit:contain}
+.panel-brand .logo-mobile-name{display:none}
+.dialog-company-logo{display:block;width:min(100%,340px);height:auto;margin:28px 0 12px}
+.company-actions,.dialog-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px}
+.details-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 2px;font-size:14px;font-weight:500;white-space:nowrap}
+.details-button:hover{color:#aa3b00}
+.service-website{display:flex;align-items:center;gap:10px;color:#a93b00;font-size:14px;font-weight:500;margin:0 30px 28px;line-height:1.5}
+.service-website:hover{text-decoration:underline;text-underline-offset:4px}
+@media(min-width:701px) and (max-width:1100px){.gallery-caption{flex-wrap:wrap}.selected-company{flex-basis:100%}.company-actions{flex:1}}
+@media(max-width:700px){
+  .company-actions{order:2;width:100%;justify-content:center;gap:6px}
+  .company-actions .discover-button{width:100%}
+  .company-panel:not(.active) .panel-brand.has-logo{background:transparent;border:0;padding:0}
+  .company-panel:not(.active) .company-logo{display:none}
+  .company-panel:not(.active) .logo-mobile-name{display:flex}
+  .company-panel.active .panel-brand.has-logo{padding:20px 10px}
+  .dialog-actions{flex-direction:column;align-items:stretch;gap:8px}
+  .service-website{margin:0 25px 25px}
+}

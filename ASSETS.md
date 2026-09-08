@@ -15,3 +15,7 @@ Las descripciones de las empresas son propuestas editoriales para esta primera v
 
 Helvetiker Bold, distribuida con Three.js: https://threejs.org/examples/fonts/helvetiker_bold.typeface.json
 Licencia incluida en public/licenses/helvetiker.txt y en los metadatos del archivo original.
+
+## Identidad de ContaWeb
+
+Logo oficial aportado por el usuario: src/assets/img/contaweb-aym-06.png. Utilizado sin modificar en la tarjeta y ficha del sistema contable.
