@@ -46,3 +46,23 @@ html:has(dialog[open]){overflow:hidden}
   .company-panel:not(.active) .panel-brand strong{flex-direction:row;align-items:center;gap:6px;font-size:12px;letter-spacing:.4px;white-space:nowrap}
   .company-panel:not(.active) .panel-brand em{font-size:12px;letter-spacing:.5px;margin-top:0}
 }
+
+/* Orange navigation with dark, readable controls. */
+.header{background:linear-gradient(110deg,#ff831f,#ff982c);color:#191512;border-bottom:1px solid #ad4e081a;backdrop-filter:blur(24px) saturate(140%)}
+.header .wordmark,.header .wordmark>span{color:#191512}
+.header .wordmark i{background:#fff}
+.header nav{color:#21170f}
+.header nav a{padding:9px 12px;margin:0 -12px;border-radius:999px;transition:background .25s,color .25s}
+.header nav a:hover{color:#111;background:#ffffff30}
+.header .nav-count{background:#ffffff66;color:#572400}
+.header .header-link{background:#1d1d1f;color:#fff;box-shadow:0 3px 12px #74330314}
+.header .header-link:hover{background:#333335}
+.header .header-link svg{color:#ffad51}
+.header a:focus-visible,.header button:focus-visible{outline:2px solid #17120e;outline-offset:5px}
+@media(max-width:900px){.header .header-link{display:none}}
+@media(max-width:700px){
+  .header .menu-toggle{display:block;color:#191512;padding:9px 15px;border:1px solid #19151230;border-radius:999px;background:#ffffff17}
+  .header nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:8px;padding:18px 6% 24px;background:#ff9329f2;border-bottom:1px solid #b3541826;backdrop-filter:blur(24px);box-shadow:0 14px 22px #57240012}
+  .header nav.open{display:flex}
+  .header nav a{padding:12px 16px;margin:0;font-size:15px;border-radius:14px}
+}
