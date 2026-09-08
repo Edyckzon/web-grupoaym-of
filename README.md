@@ -28,9 +28,9 @@ npm run build
 `src/App.tsx`: nombres, descripciones y contenido.
 `src/App.css`: composición y estilos.
 `src/index.css`: tipografía y colores globales.
-`src/BrandScene.tsx`: cristal tridimensional.
+`src/BrandScene.tsx`: monograma A&M con letras extruidas y marco translúcido.
 `public/images`: fotografías locales; fuentes en ASSETS.md.
 
-Las fotografías son ilustrativas y las descripciones son propuestas para revisar con A&M GROUP. No se han inventado teléfonos, direcciones, estadísticas ni enlaces comerciales. Las fuentes DM Sans y Manrope se cargan desde Google Fonts, con alternativas locales si no hay conexión.
+Las fotografías son ilustrativas y las descripciones son propuestas para revisar con A&M GROUP. No se han inventado teléfonos, direcciones, estadísticas ni enlaces comerciales. La tipografía utiliza la fuente del sistema, sin descargas externas de fuentes.
 
 Preparado para Cloudflare Pages. Consulta DEPLOYMENT.md para conectar el repositorio, configurar main como producción y dev como vista previa, y vincular grupoaym.com.
