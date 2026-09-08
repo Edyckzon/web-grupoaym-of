@@ -45,9 +45,9 @@ export default function App() {
   useEffect(() => {
     if (!motion) return
     const context = gsap.context(() => {
-      gsap.from('.intro-copy > *', { y: 25, opacity: 0, duration: 1, stagger: 0.13, ease: 'power3.out' })
+      gsap.from('.intro-copy > *', { y: 16, opacity: 0, duration: 1.15, stagger: 0.1, ease: 'power3.out' })
       gsap.utils.toArray<HTMLElement>('.reveal').forEach(element => {
-        gsap.from(element, { y: 40, opacity: 0, duration: 0.85, ease: 'power2.out', scrollTrigger: { trigger: element, start: 'top 92%', once: true } })
+        gsap.from(element, { y: 22, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: element, start: 'top 92%', once: true } })
       })
       gsap.to('.gallery-depth', { y: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } })
     }, root)
@@ -76,7 +76,7 @@ export default function App() {
     <main id="contenido">
       <section className="hero" id="inicio" aria-labelledby="hero-title">
         <div className="intro">
-          <div className="intro-copy"><p className="eyebrow"><span className="status-dot" /> UN GRUPO. MÚLTIPLES POSIBILIDADES.</p><h1 id="hero-title">Tu próximo nivel.<br /><span>Nuestra visión.</span></h1></div>
+          <div className="intro-copy"><p className="eyebrow"><span className="status-dot" /> Un grupo. Múltiples posibilidades.</p><h1 id="hero-title">Tu próximo nivel.<br /><span>Nuestra visión.</span></h1></div>
           <div className="intro-aside"><p>Contabilidad, finanzas y asesoría legal.<br />Un ecosistema que impulsa tu empresa.</p><a href="#empresas">Explora el grupo <Arrow /></a></div>
           {motion && <div className="brand-scene" aria-hidden="true"><SceneBoundary><Suspense fallback={null}><BrandScene /></Suspense></SceneBoundary></div>}
         </div>
@@ -101,9 +101,9 @@ export default function App() {
       </section>
 
       <section className="group-section" id="grupo" aria-labelledby="group-title">
-        <div className="section-kicker reveal"><span className="tiny-square" /> EL PODER DE ESTAR CONECTADOS <span className="section-number">01 — EL GRUPO</span></div>
+        <div className="section-kicker reveal"><span className="tiny-square" /> El poder de estar conectados <span className="section-number">A&M Group</span></div>
         <div className="group-grid"><h2 className="reveal" id="group-title">Visión integral.<br />Impacto <span>real.</span></h2><div className="group-copy reveal"><p>Las buenas decisiones empiezan con una perspectiva más amplia.</p><p>En A&M GROUP reunimos contabilidad, finanzas y asesoría legal con empresas que amplían nuestras posibilidades. Distintas especialidades, una misma dirección: acompañar el desarrollo de tu negocio.</p><a className="text-link" href="#expertise">Conoce nuestra experiencia <Arrow direction="diagonal" /></a></div></div>
-        <div className="expertise" id="expertise"><div className="expertise-heading reveal"><p className="eyebrow">NUESTRA EXPERIENCIA</p><span>Tres perspectivas. Una estrategia.</span></div>
+        <div className="expertise" id="expertise"><div className="expertise-heading reveal"><p className="eyebrow">Nuestra experiencia</p><span>Tres perspectivas. Una estrategia.</span></div>
           {[
             ['01', 'Contabilidad', 'Orden para crecer.', 'Información contable y orientación tributaria para comprender tu negocio y tomar decisiones con mayor claridad.'],
             ['02', 'Finanzas', 'Perspectiva para avanzar.', 'Análisis y planificación financiera para entender tus recursos, evaluar escenarios y definir tus próximos pasos.'],
@@ -111,7 +111,7 @@ export default function App() {
           ].map(([number, title, subtitle, text]) => <details className="service-row reveal" key={number}><summary><span className="service-number">{number}</span><h3>{title}</h3><span className="service-tagline">{subtitle}</span><span className="service-expand" aria-hidden="true">+</span></summary><p>{text}</p></details>)}
         </div>
       </section>
-      <section className="closing-section"><div className="closing-orbit" aria-hidden="true" /><p className="eyebrow reveal">EL ECOSISTEMA A&M GROUP</p><h2 className="reveal">Cinco empresas.<br /><span>Un horizonte compartido.</span></h2><a className="orange-button reveal" href="#empresas">Encuentra tu siguiente paso <Arrow direction="diagonal" /></a></section>
+      <section className="closing-section"><div className="closing-orbit" aria-hidden="true" /><p className="eyebrow reveal">El ecosistema A&M Group</p><h2 className="reveal">Cinco empresas.<br /><span>Un horizonte compartido.</span></h2><a className="orange-button reveal" href="#empresas">Encuentra tu siguiente paso <Arrow direction="diagonal" /></a></section>
     </main>
     <footer><a className="wordmark" href="#inicio">A<span>&</span>M <b>GROUP</b><i /></a><p>Contabilidad. Finanzas. Visión empresarial.</p><span>© {new Date().getFullYear()} A&M GROUP</span><a href="#inicio" aria-label="Volver al inicio">↑</a></footer>
     <dialog ref={dialog} className="company-dialog" aria-labelledby="company-dialog-title" onClose={() => setDetail(null)} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close() }}>
