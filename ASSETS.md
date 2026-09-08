@@ -10,3 +10,8 @@ Licencia: https://unsplash.com/license
 - billing.jpg — Aaron Lefler — https://unsplash.com/photos/a-calculator-sitting-on-top-of-a-piece-of-paper-ySZdYkPGEbs
 
 Las descripciones de las empresas son propuestas editoriales para esta primera versión y deben validarse con el grupo antes de publicación.
+
+## Tipografía del monograma 3D
+
+Helvetiker Bold, distribuida con Three.js: https://threejs.org/examples/fonts/helvetiker_bold.typeface.json
+Licencia incluida en public/licenses/helvetiker.txt y en los metadatos del archivo original.
