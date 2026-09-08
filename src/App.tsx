@@ -43,7 +43,7 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
 }
 
 export default function App() {
-  const [active, setActive] = useState(1)
+  const [active, setActive] = useState(4)
   const [menuOpen, setMenuOpen] = useState(false)
   const [detail, setDetail] = useState<number | null>(null)
   const [motion, setMotion] = useState(false)
