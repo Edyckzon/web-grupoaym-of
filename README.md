@@ -34,3 +34,12 @@ npm run build
 Las fotografías son ilustrativas y las descripciones son propuestas para revisar con A&M GROUP. No se han inventado teléfonos, direcciones, estadísticas ni enlaces comerciales. La tipografía utiliza la fuente del sistema, sin descargas externas de fuentes.
 
 Preparado para Cloudflare Pages. Consulta DEPLOYMENT.md para conectar el repositorio, configurar main como producción y dev como vista previa, y vincular grupoaym.com.
+
+## Navegación
+
+- `/`: inicio.
+- `/grupo`: presentación del grupo.
+- `/experiencia`: áreas de especialidad.
+- `/empresas`: galería de empresas.
+
+Son rutas de acceso a las secciones de la misma página. La navegación utiliza History API, admite atrás/adelante, abrir en nueva pestaña y enlaces directos. Los enlaces antiguos con #grupo, #expertise y #empresas se normalizan conservando su destino. `public/_redirects` configura las rutas limpias para Cloudflare Pages.

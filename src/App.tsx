@@ -2,6 +2,7 @@ import { Component, lazy, Suspense, useEffect, useRef, useState } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useSectionNavigation } from './useSectionNavigation'
 import './App.css'
 
 const BrandScene = lazy(() => import('./BrandScene'))
@@ -33,6 +34,7 @@ export default function App() {
   const root = useRef<HTMLDivElement>(null)
   const dialog = useRef<HTMLDialogElement>(null)
   const company = companies[active]
+  const { currentPath, navigate } = useSectionNavigation(() => setMenuOpen(false))
 
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -59,25 +61,24 @@ export default function App() {
   }, [detail])
 
   const move = (step: number) => setActive(index => (index + step + companies.length) % companies.length)
-  const closeMenu = () => setMenuOpen(false)
   const selectedDetail = detail === null ? null : companies[detail]
 
   return <div ref={root}>
-    <a className="skip-link" href="#contenido">Saltar al contenido</a>
+    <a className="skip-link" href="#contenido" onClick={event => { event.preventDefault(); const content = document.getElementById('contenido'); content?.focus({ preventScroll: true }); content?.scrollIntoView({ behavior: 'instant' }) }}>Saltar al contenido</a>
     <header className="header">
-      <a className="wordmark" href="#inicio" aria-label="A&M GROUP, inicio">A<span>&</span>M <b>GROUP</b><i /></a>
+      <a className="wordmark" href="/" onClick={navigate} aria-label="A&M GROUP, inicio">A<span>&</span>M <b>GROUP</b><i /></a>
       <button className="menu-toggle" aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen} aria-controls="navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Cerrar −' : 'Menú +'}</button>
       <nav id="navigation" className={menuOpen ? 'open' : ''} aria-label="Navegación principal">
-        <a href="#grupo" onClick={closeMenu}>El grupo</a><a href="#expertise" onClick={closeMenu}>Nuestra experiencia</a><a href="#empresas" onClick={closeMenu}>Nuestras empresas <span className="nav-count">05</span></a>
+        <a href="/grupo" onClick={navigate} aria-current={currentPath === '/grupo' ? 'location' : undefined}>El grupo</a><a href="/experiencia" onClick={navigate} aria-current={currentPath === '/experiencia' ? 'location' : undefined}>Nuestra experiencia</a><a href="/empresas" onClick={navigate} aria-current={currentPath === '/empresas' ? 'location' : undefined}>Nuestras empresas <span className="nav-count">05</span></a>
       </nav>
-      <a className="header-link" href="#grupo">Conócenos <Arrow direction="diagonal" /></a>
+      <a className="header-link" href="/grupo" onClick={navigate}>Conócenos <Arrow direction="diagonal" /></a>
     </header>
 
-    <main id="contenido">
+    <main id="contenido" tabIndex={-1}>
       <section className="hero" id="inicio" aria-labelledby="hero-title">
         <div className="intro">
           <div className="intro-copy"><p className="eyebrow"><span className="status-dot" /> Un grupo. Múltiples posibilidades.</p><h1 id="hero-title">Tu próximo nivel.<br /><span>Nuestra visión.</span></h1></div>
-          <div className="intro-aside"><p>Contabilidad, finanzas y asesoría legal.<br />Un ecosistema que impulsa tu empresa.</p><a href="#empresas">Explora el grupo <Arrow /></a></div>
+          <div className="intro-aside"><p>Contabilidad, finanzas y asesoría legal.<br />Un ecosistema que impulsa tu empresa.</p><a href="/empresas" onClick={navigate}>Explora el grupo <Arrow /></a></div>
           {motion && <div className="brand-scene" aria-hidden="true"><SceneBoundary><Suspense fallback={null}><BrandScene /></Suspense></SceneBoundary></div>}
         </div>
 
@@ -97,12 +98,12 @@ export default function App() {
           <button className="discover-button" onClick={() => setDetail(active)}>Descubrir empresa <Arrow direction="diagonal" /></button>
           <div className="gallery-controls"><button onClick={() => move(-1)} aria-label="Empresa anterior"><Arrow direction="left" /></button><button onClick={() => move(1)} aria-label="Empresa siguiente"><Arrow /></button></div>
         </div>
-        <div className="hero-baseline"><span>INDEPENDIENTES EN ESPECIALIDAD. CONECTADOS EN VISIÓN.</span><a href="#grupo">SIGUE EXPLORANDO <span>↓</span></a></div>
+        <div className="hero-baseline"><span>INDEPENDIENTES EN ESPECIALIDAD. CONECTADOS EN VISIÓN.</span><a href="/grupo" onClick={navigate}>SIGUE EXPLORANDO <span>↓</span></a></div>
       </section>
 
       <section className="group-section" id="grupo" aria-labelledby="group-title">
         <div className="section-kicker reveal"><span className="tiny-square" /> El poder de estar conectados <span className="section-number">A&M Group</span></div>
-        <div className="group-grid"><h2 className="reveal" id="group-title">Visión integral.<br />Impacto <span>real.</span></h2><div className="group-copy reveal"><p>Las buenas decisiones empiezan con una perspectiva más amplia.</p><p>En A&M GROUP reunimos contabilidad, finanzas y asesoría legal con empresas que amplían nuestras posibilidades. Distintas especialidades, una misma dirección: acompañar el desarrollo de tu negocio.</p><a className="text-link" href="#expertise">Conoce nuestra experiencia <Arrow direction="diagonal" /></a></div></div>
+        <div className="group-grid"><h2 className="reveal" id="group-title">Visión integral.<br />Impacto <span>real.</span></h2><div className="group-copy reveal"><p>Las buenas decisiones empiezan con una perspectiva más amplia.</p><p>En A&M GROUP reunimos contabilidad, finanzas y asesoría legal con empresas que amplían nuestras posibilidades. Distintas especialidades, una misma dirección: acompañar el desarrollo de tu negocio.</p><a className="text-link" href="/experiencia" onClick={navigate}>Conoce nuestra experiencia <Arrow direction="diagonal" /></a></div></div>
         <div className="expertise" id="expertise"><div className="expertise-heading reveal"><p className="eyebrow">Nuestra experiencia</p><span>Tres perspectivas. Una estrategia.</span></div>
           {[
             ['01', 'Contabilidad', 'Orden para crecer.', 'Información contable y orientación tributaria para comprender tu negocio y tomar decisiones con mayor claridad.'],
@@ -111,9 +112,9 @@ export default function App() {
           ].map(([number, title, subtitle, text]) => <details className="service-row reveal" key={number}><summary><span className="service-number">{number}</span><h3>{title}</h3><span className="service-tagline">{subtitle}</span><span className="service-expand" aria-hidden="true">+</span></summary><p>{text}</p></details>)}
         </div>
       </section>
-      <section className="closing-section"><div className="closing-orbit" aria-hidden="true" /><p className="eyebrow reveal">El ecosistema A&M Group</p><h2 className="reveal">Cinco empresas.<br /><span>Un horizonte compartido.</span></h2><a className="orange-button reveal" href="#empresas">Encuentra tu siguiente paso <Arrow direction="diagonal" /></a></section>
+      <section className="closing-section"><div className="closing-orbit" aria-hidden="true" /><p className="eyebrow reveal">El ecosistema A&M Group</p><h2 className="reveal">Cinco empresas.<br /><span>Un horizonte compartido.</span></h2><a className="orange-button reveal" href="/empresas" onClick={navigate}>Encuentra tu siguiente paso <Arrow direction="diagonal" /></a></section>
     </main>
-    <footer><a className="wordmark" href="#inicio">A<span>&</span>M <b>GROUP</b><i /></a><p>Contabilidad. Finanzas. Visión empresarial.</p><span>© {new Date().getFullYear()} A&M GROUP</span><a href="#inicio" aria-label="Volver al inicio">↑</a></footer>
+    <footer><a className="wordmark" href="/" onClick={navigate}>A<span>&</span>M <b>GROUP</b><i /></a><p>Contabilidad. Finanzas. Visión empresarial.</p><span>© {new Date().getFullYear()} A&M GROUP</span><a href="/" onClick={navigate} aria-label="Volver al inicio">↑</a></footer>
     <dialog ref={dialog} className="company-dialog" aria-labelledby="company-dialog-title" onClose={() => setDetail(null)} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close() }}>
       {selectedDetail && <div className="dialog-inner"><button className="dialog-close" aria-label="Cerrar detalle de empresa" onClick={() => dialog.current?.close()}>×</button><span className="eyebrow">A&M GROUP / {selectedDetail.category}</span><h2 id="company-dialog-title">{selectedDetail.name}</h2><p className="dialog-headline">{selectedDetail.headline}</p><p>{selectedDetail.description}</p><ul>{selectedDetail.services.map(service => <li key={service}><span />{service}</li>)}</ul><button className="orange-button" onClick={() => dialog.current?.close()}>Seguir explorando <Arrow /></button></div>}
     </dialog>

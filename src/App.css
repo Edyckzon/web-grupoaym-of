@@ -76,3 +76,5 @@ html{scroll-padding-top:108px}
   .header .wordmark>span{font-size:28px}
   .header .wordmark b{font-size:13px;letter-spacing:1.4px;margin-left:9px}
 }
+
+.header nav a[aria-current='location']{color:#a93b00;background:#fff2e6}
