@@ -3,6 +3,7 @@ import type { FormEvent, MouseEvent, ReactNode } from 'react'
 import { companies, contact, pillars, trackEvent } from './siteData'
 import { useSiteNavigation } from './useSiteNavigation'
 import { buildContactMailto } from './contactMail'
+import { BrandSelect } from './BrandSelect'
 import './App.css'
 
 const BrandScene = lazy(() => import('./BrandScene'))
@@ -26,9 +27,12 @@ function ContactForm() {
   const privacyUrl = import.meta.env.VITE_PRIVACY_URL as string | undefined
   const directDelivery = Boolean(endpoint && privacyUrl)
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error' | 'prepared'>('idle')
+  const [brand, setBrand] = useState('')
+  const [brandError, setBrandError] = useState(false)
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (status === 'sending') return
+    if (!brand) { setBrandError(true); document.getElementById('brand-trigger')?.focus(); return }
     const form = event.currentTarget
     const fields = Object.fromEntries(new FormData(form).entries())
     if (!directDelivery) {
@@ -43,7 +47,7 @@ function ContactForm() {
     try {
       const response = await fetch(endpoint!, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields), signal: AbortSignal.timeout(15000) })
       if (!response.ok) throw new Error('Delivery failed')
-      setStatus('success'); trackEvent('contact_submit', { brand: String(fields.brand) }); form.reset()
+      setStatus('success'); trackEvent('contact_submit', { brand: String(fields.brand) }); form.reset(); setBrand(''); setBrandError(false)
     } catch { setStatus('error') }
   }
   return <div className="contact-form-wrap"><p className="eyebrow">Cuéntanos qué necesitas</p><h2>Empecemos una conversación.</h2>
@@ -53,7 +57,7 @@ function ContactForm() {
       <label>Empresa <span className="optional">(opcional)</span><input name="company" autoComplete="organization" maxLength={160} /></label>
       <label>Correo electrónico<input name="email" type="email" autoComplete="email" maxLength={200} required /></label>
       <label>Teléfono <span className="optional">(opcional)</span><input name="phone" type="tel" autoComplete="tel" maxLength={30} /></label>
-      <label className="form-full">Marca de interés<select name="brand" required defaultValue=""><option value="" disabled>Selecciona una marca</option>{companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}</select></label>
+      <BrandSelect value={brand} onChange={value => { setBrand(value); setBrandError(false) }} error={brandError} disabled={status === 'sending'} />
       <label className="form-full">Mensaje<textarea name="message" rows={4} maxLength={3000} required /></label>
     </div>{directDelivery && privacyUrl && <label className="consent"><input type="checkbox" name="consent" value="yes" required /><span>He leído la <a href={privacyUrl} target="_blank" rel="noopener noreferrer">política de privacidad</a> y acepto el tratamiento de mis datos para atender esta consulta.</span></label>}
     <button className="orange-button" type="submit">{status === 'sending' ? 'Enviando…' : directDelivery ? 'Enviar consulta' : 'Abrir consulta en mi correo'}<Arrow direction="right" /></button></fieldset>
