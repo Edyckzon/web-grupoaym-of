@@ -16,7 +16,7 @@ npm run build
 
 ## Contenido e interacciones
 
-- Cinco empresas seleccionables con clic, botones anterior/siguiente y flechas del teclado cuando el foco está en la galería.
+- Cuatro empresas seleccionables con clic, botones anterior/siguiente y flechas del teclado cuando el foco está en la galería.
 - Fichas de empresa en un diálogo accesible; Escape cierra la ficha.
 - Áreas de especialidad desplegables.
 - Menú móvil y navegación a las secciones.

@@ -79,7 +79,23 @@ html{scroll-padding-top:108px}
 
 .header nav a[aria-current='location']{color:#a93b00;background:#fff2e6}
 
-/* Original ContaWeb identity and verified company websites. */
+/* Card selection and direct access to company details. */
+.panel-select{position:absolute;inset:0;z-index:2;width:100%;height:100%;border:0;background:transparent;border-radius:inherit;cursor:pointer}
+.panel-select:focus-visible{outline:3px solid var(--orange);outline-offset:-4px}
+.company-panel .panel-bottom{z-index:3;pointer-events:none;flex-wrap:wrap;gap:12px}
+.panel-discover{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:9px 14px;border:1px solid #ffffff70;border-radius:999px;background:#ffffff1f;backdrop-filter:blur(14px);color:#fff;font-size:12px;font-weight:500;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.panel-discover svg{display:block;width:16px;height:16px;color:#ffb65b}
+.panel-discover:hover{background:#ffffff35;border-color:#fff;transform:translateY(-2px)}
+.panel-discover:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+@media(max-width:700px){
+  .company-panel:not(.active) .panel-bottom{display:flex;left:4px;right:4px;bottom:16px;justify-content:center}
+  .company-panel:not(.active) .panel-bottom>span{display:none}
+  .company-panel:not(.active) .panel-discover{padding:8px 0;width:100%;min-height:44px;border-radius:12px}
+  .company-panel:not(.active) .panel-discover span{writing-mode:vertical-rl;font-size:10px}
+  .company-panel:not(.active) .panel-discover svg{display:none}
+}
+
+/* Company identities and websites. */
 .company-panel .panel-brand.has-logo{background:#fffffff0;border-color:#fff;padding:24px 16px}
 .company-logo{display:block;width:100%;max-width:340px;height:auto;object-fit:contain}
 .panel-brand .logo-mobile-name{display:none}
@@ -93,9 +109,9 @@ html{scroll-padding-top:108px}
 @media(max-width:700px){
   .company-actions{order:2;width:100%;justify-content:center;gap:6px}
   .company-actions .discover-button{width:100%}
-  .company-panel:not(.active) .panel-brand.has-logo{background:transparent;border:0;padding:0}
-  .company-panel:not(.active) .company-logo{display:none}
-  .company-panel:not(.active) .logo-mobile-name{display:flex}
+  .company-panel:not(.active) .panel-brand.has-logo{width:180px;background:#fffffff0;border:1px solid #fff;padding:8px 12px;border-radius:12px}
+  .company-panel:not(.active) .company-logo{display:block;width:100%;max-height:34px;object-fit:contain}
+  .company-panel:not(.active) .logo-mobile-name{display:none}
   .company-panel.active .panel-brand.has-logo{padding:20px 10px}
   .dialog-actions{flex-direction:column;align-items:stretch;gap:8px}
   .service-website{margin:0 25px 25px}
