@@ -1,45 +1,50 @@
-# A&M GROUP — versión 1
+# Grupo AyM
 
-Web corporativa local con React, TypeScript y Vite. Diseño en blanco, negro, naranja y amarillo, paneles de empresas con profundidad y cristal, GSAP y escena WebGL de Three.js.
+Portal corporativo con React, TypeScript y Vite. Tres marcas: A&M Asesores Contables, ContaWeb A&M (Facturación Electrónica y ERP) y Renting Car A&M.
 
-## Iniciar
+## Desarrollo
 
-Doble clic en `Iniciar-web.cmd`. Utiliza el Node 24.16.0 instalado en esta PC. Mantener la terminal abierta mientras se utiliza la web.
-
-Desde una terminal con Node 24 activo:
+Con Node 24:
 
 ```sh
-npm install
+npm ci
 npm run dev
-npm run build
 ```
 
-## Contenido e interacciones
+En esta sesión se utiliza el pnpm del entorno de Codex, sin modificar el archivo de bloqueo de npm.
 
-- Cuatro empresas seleccionables con clic, botones anterior/siguiente y flechas del teclado cuando el foco está en la galería.
-- Fichas de empresa en un diálogo accesible; Escape cierra la ficha.
-- Áreas de especialidad desplegables.
-- Menú móvil y navegación a las secciones.
-- Se respeta la preferencia de movimiento reducido del sistema.
-- La escena 3D se carga por separado y no bloquea el contenido si WebGL no está disponible.
+## Comprobaciones
 
-## Editar
+```sh
+npm run build
+npm test
+npm run lint
+```
 
-`src/App.tsx`: nombres, descripciones y contenido.
-`src/App.css`: composición y estilos.
-`src/index.css`: tipografía y colores globales.
-`src/BrandScene.tsx`: monograma A&M con letras extruidas y marco translúcido.
-`public/images`: fotografías locales; fuentes en ASSETS.md.
+El build genera HTML completo para Inicio, Nosotros y Contacto, con hidratación de React para las interacciones. No requiere un servidor de renderizado en producción. Publicar la carpeta `dist` completa, que incluye metadatos por página, sitemap, robots y página 404.
 
-Las fotografías son ilustrativas y las descripciones son propuestas para revisar con A&M GROUP. No se han inventado teléfonos, direcciones, estadísticas ni enlaces comerciales. La tipografía utiliza la fuente del sistema, sin descargas externas de fuentes.
+## Rutas
 
-Preparado para Cloudflare Pages. Consulta DEPLOYMENT.md para conectar el repositorio, configurar main como producción y dev como vista previa, y vincular grupoaym.com.
+- `/`: portada, marcas, ecosistema e historia resumida.
+- `/nosotros`: historia y propósito del grupo.
+- `/contacto`: canales por marca y formulario que prepara una consulta en la aplicación de correo.
+- `/#empresas` y `/#ecosistema`: accesos directos a las secciones.
+- `/grupo`, `/empresas` y `/experiencia`: compatibilidad con enlaces antiguos mediante `public/_redirects`; también se resuelven en desarrollo.
 
-## Navegación
+Las tarjetas tienen el mismo ancho en escritorio. En móvil se deslizan horizontalmente con botones alternativos. Todas conservan su modal Descubrir. ContaWeb muestra dos destinos independientes, sin redirigir ni alterar sus dominios.
 
-- `/`: inicio.
-- `/grupo`: presentación del grupo.
-- `/experiencia`: áreas de especialidad.
-- `/empresas`: galería de empresas.
+## Contenido y contacto
 
-Son rutas de acceso a las secciones de la misma página. La navegación utiliza History API, admite atrás/adelante, abrir en nueva pestaña y enlaces directos. Los enlaces antiguos con #grupo, #expertise y #empresas se normalizan conservando su destino. `public/_redirects` configura las rutas limpias para Cloudflare Pages.
+`src/siteData.ts` concentra marcas, destinos, metadatos y campos de contacto. Los campos vacíos no se publican. Los logos originales se conservan y la web utiliza copias WebP optimizadas.
+
+Para habilitar el formulario, completar `VITE_CONTACT_ENDPOINT` y `VITE_PRIVACY_URL` según `.env.example`. El endpoint debe recibir JSON, validar y enrutar `brand` en el servidor, y responder con un estado 2xx solo cuando acepte el mensaje. El envío real, los correos destinatarios y la configuración del proveedor aún no están implementados. Sin endpoint, el formulario abre la aplicación de correo con destinatario, asunto y mensaje preparados. El usuario revisa y envía el correo; no se presenta como un envío recibido por el servidor. Asesores Contables usa informes@asesorescontablesaym.com; las demás consultas usan administracion@grupoaym.com.
+
+WhatsApp y teléfono están conectados al +51 981 204 258. El correo general es administracion@grupoaym.com. Quedan pendientes dirección, horario y dominio de Renting Car.
+
+Se emiten eventos locales `grupoaym:event` para clics de salida y contacto. Están listos para conectar una herramienta de medición; no hay una cuenta analítica ni un gestor de etiquetas instalado. Los eventos contienen marca, producto y ubicación del enlace, nunca los campos del formulario.
+
+## Alcance de esta revisión
+
+Aplicadas las mejoras de estructura, textos, navegación, tarjetas, móvil, footer, rendimiento de logos y HTML inicial de la auditoría v1.1. Se conservaron los modales solicitados y ambos sitios de ContaWeb.
+
+Pendientes de información: envío directo desde el servidor, dominio de Renting Car, dirección, horario, fotografías propias, cifras documentadas y cuenta analítica. El año 2007 y el relato provienen del documento entregado. No se publicaron las cifras +500, +100 ni cinco países. Los textos legales, RUC y cambios en los sitios externos quedan fuera de esta implementación.

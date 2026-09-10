@@ -37,3 +37,9 @@ Trabajar en dev y subir los cambios. Cloudflare Pages generará una vista previa
 - https://developers.cloudflare.com/pages/get-started/git-integration/
 - https://developers.cloudflare.com/pages/configuration/build-configuration/
 - https://developers.cloudflare.com/pages/configuration/custom-domains/
+
+## Portada y rutas de la revisión v1.1
+
+El comando `npm run build` genera HTML estático por página. Mantener este comando completo para incluir el paso de prerenderizado. La carpeta de salida sigue siendo `dist`. El archivo `_redirects` conserva las URL antiguas del portal; no cambia los dominios de las marcas.
+
+En la sesión actual, el trabajo local se realiza en `main` por indicación del usuario. No se han subido estos cambios ni activado un despliegue. Los valores de contacto y las variables del formulario deben configurarse antes de activar el envío real.

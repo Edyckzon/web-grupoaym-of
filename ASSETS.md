@@ -19,3 +19,9 @@ Licencia incluida en public/licenses/helvetiker.txt y en los metadatos del archi
 ## Identidad de ContaWeb
 
 Logo oficial aportado por el usuario: src/assets/img/contaweb-aym-06.png. Utilizado sin modificar en la tarjeta y ficha del sistema contable.
+
+## Assets de la revisión corporativa
+
+Los archivos `src/assets/img/asesores.webp`, `contaweb.webp` y `renting.webp` son versiones optimizadas de los logos PNG suministrados por el cliente. No sustituyen los originales.
+
+`public/images/grupo-aym-social.png` es la composición para compartir enlaces, con tipografía y los tres logos suministrados. Las fotografías de las tarjetas siguen siendo las existentes; no se presentan como fotografías de las operaciones del grupo.

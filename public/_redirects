@@ -1,3 +1,5 @@
-/grupo /index.html 200
-/experiencia /index.html 200
-/empresas /index.html 200
+/grupo /nosotros 301
+/experiencia /#ecosistema 301
+/empresas /#empresas 301
+/nosotros /nosotros.html 200
+/contacto /contacto.html 200
