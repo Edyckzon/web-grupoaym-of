@@ -23,7 +23,7 @@ export const companies = [
     ],
   },
   {
-    id: 'renting', name: 'Renting Car A&M', category: 'Movilidad', email: '',
+    id: 'renting', name: 'Renting Car A&M', category: 'Movilidad', email: 'rentingcaraym@gmail.com', phone: '+51 993 334 984', whatsapp: '51993334984',
     headline: 'Movilidad que no te detiene.',
     description: 'Alquiler de vehículos y maquinaria para empresas y personas, con atención personalizada y el respaldo de Grupo AyM.',
     services: ['Alquiler de vehículos', 'Alquiler de maquinaria', 'Atención a empresas y personas'],
@@ -35,10 +35,10 @@ export const companies = [
 // Complete only with confirmed corporate contact details. No secrets belong here.
 export const contact = {
   email: 'administracion@grupoaym.com', phone: '+51 981 204 258', whatsapp: '51981204258',
-  landline: '01 4800 196', landlineHref: '+5114800196',
-  address: 'Av. Santiago de Surco 3573, Santiago de Surco 15038', hours: '',
+  landline: '01 4800-300', landlineHref: '+5114800300',
+  address: 'Av. Santiago de Surco 3573 · Lima - Lima', hours: '',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Av.%20Santiago%20de%20Surco%203573%2C%20Santiago%20de%20Surco%2015038',
-  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.680622922928!2d-76.9997221240492!3d-12.133990943532819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b808c8394691%3A0x185f188039a10a2f!2sContaweb%20A%26M!5e0!3m2!1ses-419!2spe!4v1789079626675!5m2!1ses-419!2spe',
+  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1950.3390639150045!2d-76.99733495462168!3d-12.134161403897252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b99bde06e1df%3A0x20e86a5a34a880eb!2sAsesores%20Contables%20A%26M!5e0!3m2!1ses-419!2spe!4v1789413888069!5m2!1ses-419!2spe',
 }
 
 export const pillars = [
