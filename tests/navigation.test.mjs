@@ -38,7 +38,7 @@ test('production pages include readable HTML, distinct metadata and built assets
   for (const path of ['', '/nosotros', '/contacto']) {
     const html = readFileSync(new URL(path ? `../dist${path}.html` : '../dist/index.html', import.meta.url), 'utf8')
     assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1)
-    assert.ok(html.includes('Grupo AyM'))
+    assert.ok(html.includes('Grupo A&amp;M'))
     assert.ok(!/A&amp;M GROUP|cinco empresas|ANKA ERP|Nueva Lima|Lorem ipsum/i.test(html))
     assert.ok(!html.includes('src="/src/'))
     assert.ok(html.includes(`href="https://grupoaym.com${path || '/'}"`))

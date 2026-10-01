@@ -1,4 +1,4 @@
-# Grupo AyM
+# Grupo A&M
 
 Portal corporativo con React, TypeScript y Vite. Tres marcas: A&M Asesores Contables, ContaWeb A&M (Facturación Electrónica y ERP) y Renting Car A&M.
 
@@ -35,11 +35,13 @@ Las tarjetas tienen el mismo ancho en escritorio. En móvil se deslizan horizont
 
 ## Contenido y contacto
 
+Inicio incluye un carrusel compacto de ocho reseñas en `/#resenas`. La selección de `src/Reviews.tsx` se transcribió de las capturas aportadas: tres comentarios (uno como extracto) y cinco valoraciones sin texto. Usa iniciales, no las capturas ni fotografías de los autores. Es contenido estático de actualización manual, sin API; no representa una puntuación global ni un feed en tiempo real.
+
 `src/siteData.ts` concentra marcas, destinos, metadatos y campos de contacto. Los campos vacíos no se publican. Los logos originales se conservan y la web utiliza copias WebP optimizadas.
 
-Para habilitar el formulario, completar `VITE_CONTACT_ENDPOINT` y `VITE_PRIVACY_URL` según `.env.example`. El endpoint debe recibir JSON, validar y enrutar `brand` en el servidor, y responder con un estado 2xx solo cuando acepte el mensaje. El envío real, los correos destinatarios y la configuración del proveedor aún no están implementados. Sin endpoint, el formulario abre la aplicación de correo con destinatario, asunto y mensaje preparados. El usuario revisa y envía el correo; no se presenta como un envío recibido por el servidor. Asesores Contables usa informes@asesorescontablesaym.com; las demás consultas usan administracion@grupoaym.com.
+Para habilitar el formulario, completar `VITE_CONTACT_ENDPOINT` y `VITE_PRIVACY_URL` según `.env.example`. El endpoint debe recibir JSON, validar y enrutar `brand` en el servidor, y responder con un estado 2xx solo cuando acepte el mensaje. El envío real, los correos destinatarios y la configuración del proveedor aún no están implementados. Sin endpoint, el formulario abre la aplicación de correo con destinatario, asunto y mensaje preparados. El usuario revisa y envía el correo; no se presenta como un envío recibido por el servidor. Asesores Contables usa informes@asesorescontablesaym.com; Renting Car usa rentingcaraym@gmail.com; ContaWeb usa administracion@grupoaym.com.
 
-WhatsApp y teléfono móvil están conectados al +51 981 204 258. La central es 01 4800 196 y el correo general es administracion@grupoaym.com. La dirección es Av. Santiago de Surco 3573, Santiago de Surco 15038. Contacto incluye el mapa de Google proporcionado y un enlace para abrir la ubicación. Quedan pendientes el horario y el dominio de Renting Car.
+WhatsApp y teléfono móvil están conectados al +51 981 204 258. La central es 01 4800-300 y el correo general es administracion@grupoaym.com. La dirección es Av. Santiago de Surco 3573, Santiago de Surco 15038. Contacto incluye el mapa de Google proporcionado y un enlace para abrir la ubicación. Renting Car atiende en el +51 993 334 984 y su web es https://rentingcaraym.com/. Queda pendiente el horario.
 
 Se emiten eventos locales `grupoaym:event` para clics de salida y contacto. Están listos para conectar una herramienta de medición; no hay una cuenta analítica ni un gestor de etiquetas instalado. Los eventos contienen marca, producto y ubicación del enlace, nunca los campos del formulario.
 
@@ -47,4 +49,4 @@ Se emiten eventos locales `grupoaym:event` para clics de salida y contacto. Est�
 
 Aplicadas las mejoras de estructura, textos, navegación, tarjetas, móvil, footer, rendimiento de logos y HTML inicial de la auditoría v1.1. Se conservaron los modales solicitados y ambos sitios de ContaWeb.
 
-Pendientes de información: envío directo desde el servidor, dominio de Renting Car, horario, fotografías propias, cifras documentadas y cuenta analítica. El año 2007 y el relato provienen del documento entregado. No se publicaron las cifras +500, +100 ni cinco países. Los textos legales, RUC y cambios en los sitios externos quedan fuera de esta implementación.
+Pendientes de información: envío directo desde el servidor, horario, fotografías propias, cifras documentadas y cuenta analítica. El año 2007 y el relato provienen del documento entregado. No se publicaron las cifras +500, +100 ni cinco países. Los textos legales, RUC y cambios en los sitios externos quedan fuera de esta implementación.

@@ -7,5 +7,5 @@ export function buildContactMailto(recipient: string, brandName: string, fields:
     `Marca de interés: ${brandName}`,
     '', 'Consulta:', String(fields.message ?? ''),
   ].join('\r\n')
-  return `mailto:${recipient}?subject=${encodeURIComponent(`Consulta desde Grupo AyM — ${brandName}`)}&body=${encodeURIComponent(body)}`
+  return `mailto:${recipient}?subject=${encodeURIComponent(`Consulta desde Grupo A&M — ${brandName}`)}&body=${encodeURIComponent(body)}`
 }

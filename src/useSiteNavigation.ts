@@ -12,7 +12,7 @@ export function useSiteNavigation(initialPath: string) {
   }, [])
   useEffect(() => {
     const page = pages[path as keyof typeof pages]
-    document.title = page?.title ?? 'Página no encontrada | Grupo AyM'
+    document.title = page?.title ?? 'Página no encontrada | Grupo A&M'
     document.querySelector('meta[name="description"]')?.setAttribute('content', page?.description ?? '')
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://grupoaym.com${path === '/' ? '/' : path}`)
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title)

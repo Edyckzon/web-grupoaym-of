@@ -9,6 +9,7 @@ export const companies = [
     description: 'Asesoría contable, tributaria, laboral y empresarial para tomar mejores decisiones con información, experiencia y respaldo profesional.',
     services: ['Asesoría contable y tributaria', 'Asesoría laboral', 'Acompañamiento empresarial'],
     image: '/images/accounting.jpg', logo: accountingLogo,
+    website: 'https://www.asesorescontablesaym.com/',
     destinations: [{ name: 'Conocer A&M Asesores', description: 'Conoce nuestros servicios de asesoría.', url: 'https://www.asesorescontablesaym.com/' }],
   },
   {
@@ -17,17 +18,19 @@ export const companies = [
     description: 'Soluciones de facturación electrónica y gestión empresarial para emitir, controlar y decidir con información integrada.',
     services: ['Facturación electrónica', 'ERP — Sistema de Gestión Empresarial', 'Información para tu negocio'],
     image: '/images/technology.jpg', logo: contawebLogo,
+    website: 'https://contawebaym.com/',
     destinations: [
       { name: 'Facturación Electrónica', description: 'Conoce la solución para emitir y gestionar tus comprobantes.', url: 'https://contawebaym.net/' },
-      { name: 'ContaWebAyM ERP', description: 'Explora la plataforma de gestión empresarial.', url: 'https://contawebaym.com/' },
+      { name: 'ContaWeb A&M ERP', description: 'Explora la plataforma de gestión empresarial.', url: 'https://contawebaym.com/' },
     ],
   },
   {
     id: 'renting', name: 'Renting Car A&M', category: 'Movilidad', email: 'rentingcaraym@gmail.com', phone: '+51 993 334 984', whatsapp: '51993334984',
     headline: 'Movilidad que no te detiene.',
-    description: 'Alquiler de vehículos y maquinaria para empresas y personas, con atención personalizada y el respaldo de Grupo AyM.',
+    description: 'Alquiler de vehículos y maquinaria para empresas y personas, con atención personalizada y el respaldo de Grupo A&M.',
     services: ['Alquiler de vehículos', 'Alquiler de maquinaria', 'Atención a empresas y personas'],
     image: '/images/car.jpg', logo: rentingLogo,
+    website: 'https://rentingcaraym.com/',
     destinations: [] as { name: string; description: string; url: string }[],
   },
 ]
@@ -48,9 +51,9 @@ export const pillars = [
 ]
 
 export const pages = {
-  '/': { title: 'Grupo AyM | Contabilidad, tecnología y movilidad en Perú', description: 'Grupo AyM reúne A&M Asesores Contables, ContaWeb A&M y Renting Car A&M en Perú. Asesoría contable, facturación electrónica, gestión empresarial y alquiler de vehículos.' },
-  '/nosotros': { title: 'Nosotros | Historia y propósito de Grupo AyM', description: 'Conoce la historia de Grupo AyM: desde nuestra vocación por la contabilidad en 2007 hasta integrar tecnología y movilidad para empresas y personas en Perú.' },
-  '/contacto': { title: 'Contacto | Conversemos sobre tu empresa | Grupo AyM', description: 'Encuentra los canales de atención de A&M Asesores Contables, ContaWeb A&M y Renting Car A&M. Conecta con las soluciones de Grupo AyM en Perú.' },
+  '/': { title: 'Grupo A&M | Contabilidad, tecnología y movilidad en Perú', description: 'Grupo A&M reúne A&M Asesores Contables, ContaWeb A&M y Renting Car A&M en Perú. Asesoría contable, facturación electrónica, gestión empresarial y alquiler de vehículos.' },
+  '/nosotros': { title: 'Nosotros | Historia y propósito de Grupo A&M', description: 'Conoce la historia de Grupo A&M: desde nuestra vocación por la contabilidad en 2007 hasta integrar tecnología y movilidad para empresas y personas en Perú.' },
+  '/contacto': { title: 'Contacto | Conversemos sobre tu empresa | Grupo A&M', description: 'Encuentra los canales de atención de A&M Asesores Contables, ContaWeb A&M y Renting Car A&M. Conecta con las soluciones de Grupo A&M en Perú.' },
 }
 export type PagePath = keyof typeof pages
 

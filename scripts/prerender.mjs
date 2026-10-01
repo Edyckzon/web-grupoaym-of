@@ -22,6 +22,6 @@ for (const [path, page] of Object.entries(pages)) {
   await writeFile(path === '/' ? 'dist/index.html' : `dist${path}.html`, html)
   console.log(`Prerendered ${path}`)
 }
-const missing = template.replace(/<title>.*?<\/title>/, '<title>Página no encontrada | Grupo AyM</title>').replace('</head>', '<meta name="robots" content="noindex" /></head>').replace('<div id="root"></div>', `<div id="root">${render('/404')}</div>`)
+const missing = template.replace(/<title>.*?<\/title>/, '<title>Página no encontrada | Grupo A&amp;M</title>').replace('</head>', '<meta name="robots" content="noindex" /></head>').replace('<div id="root"></div>', `<div id="root">${render('/404')}</div>`)
 await writeFile('dist/404.html', missing)
 await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.keys(pages).map(path => `<url><loc>https://grupoaym.com${path}</loc></url>`).join('')}</urlset>`)
